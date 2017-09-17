@@ -6,16 +6,23 @@ export default class SearchBar extends Component {
 
     this.state = { term: '' };
 
+    // if you have a callback that references 'this', bind it to the context
+    // (or use an arrow function)
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  onInputChange(event) {
-    this.setState({ term: event.target.value });
+  onInputChange(e) {
+    this.setState({ term: e.target.value });
+  }
+
+  onFormSubmit(e) {
+    e.preventDefault();
   }
 
   render() {
     return (
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Enter a city"
           className="form-control"
