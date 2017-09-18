@@ -11,6 +11,7 @@ export function fetchWeather(city, country = 'us') {
 
   return {
     type: FETCH_WEATHER,
+    // return the promise as payload
     payload: request
   };
 }
